@@ -1,0 +1,17 @@
+a{
+    text-decoration: none;
+    color: #879ed9;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+li {
+    margin-right: 40px;
+    font-weight: bold;
+}
+
+.active {
+    color: #9db0cf;
+}
