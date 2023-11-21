@@ -25,6 +25,7 @@
 
 <div class='main-app'>
     <nav>
+        <h1>LCManager</h1>
         <ul>
             {#each nav as {title, href }}
             <li>
@@ -33,10 +34,9 @@
             {/each}
         </ul>
     </nav>
-  <slot/>
+    <slot/>
   </div>
-  
-  
+
   <svelte:head>
       <style>
           body{
@@ -45,20 +45,39 @@
       </style>
   </svelte:head>
   
-  
-  
   <style>
           .main-app{
           margin: 0;
-          background-color: #242424;
-          color: #FFF;
+          background-color: white;
+          color: black;
           margin:0;
-          background-color: #242424;
+          background-color: white;
           height: 100vh;
           width: 100vw;
           display: flex;
           flex-direction: column;
           align-items: center;
-  
+      }
+      ul {
+        display: flex;
+        margin: 1;
+        margin-left: auto;
+        margin-right: 100px;
+        list-style: none;
+      }
+      li {
+        margin-right: 60px;
+      }
+      nav {
+        display: flex;
+        background-color: #212529;
+        width: 100vw;
+      }
+      h1 {
+        margin: 1;
+        font-size: 1.1em;
+        font-weight: normal;
+        color: #ADD8E6;
+        margin-left: 40px;
       }
   </style>
