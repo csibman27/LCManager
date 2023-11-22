@@ -39,15 +39,15 @@
     <slot/>
   </div>
 
-  
-
   <svelte:head>
-      <style>
-          body{
-              margin:0;
-          }
-      </style>
-  </svelte:head>
+    <title>LCManager</title>
+    <meta name="description" content="Final-Project of HDIP22">
+    <style>
+        body{
+            margin:0;
+        }
+    </style>
+</svelte:head>
   
   <style>
           .main-app{
