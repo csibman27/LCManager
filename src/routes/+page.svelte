@@ -1,13 +1,18 @@
 <script>
-  import Title from "../pages/Title/+page.svelte";
+  import Content from "../pages/Content/+page.svelte";
   import Footer from "../pages/Footer/+page.svelte";
-	import Hero from "../pages/Hero/+page.svelte";
+
+  const getPosts = async() => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+    const data = await res.json();
+    console.log(data);
+    return data
+  }
+  getPosts();
 </script>
 
-<Hero />
+<h1> Test front end </h1>
 
-<h1>Welcome to Test frontend and backend</h1>
-
-<Title />
+<Content />
 
 <Footer />

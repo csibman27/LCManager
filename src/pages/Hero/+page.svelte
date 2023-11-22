@@ -1,7 +1,7 @@
 <div class = "hero">
     <div class = "container">
-    <h2>This is where tag line goes</h2>
-    <p> Ipsum Lure mdolor hamur da la ti namanae ti latinus.</p>
+    <h2> The Plan </h2>
+    <p> "Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement" </p>
   </div>
 </div>
 

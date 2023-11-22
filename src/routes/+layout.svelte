@@ -1,5 +1,6 @@
 <script>
     import {page} from "$app/stores"
+    import Hero from "../pages/Hero/+page.svelte";
     let routeId;
     $: routeId=$page.route.id;
 
@@ -34,8 +35,11 @@
             {/each}
         </ul>
     </nav>
+    <Hero />
     <slot/>
   </div>
+
+  
 
   <svelte:head>
       <style>
