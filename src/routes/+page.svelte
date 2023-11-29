@@ -1,6 +1,6 @@
 <script>
-  import Content from "../pages/Content/+page.svelte";
-  import Footer from "../pages/Footer/+page.svelte";
+  import Content from "../lib/Content.svelte";
+  import Footer from "../lib/Footer.svelte";
 
 </script>
 

@@ -1,0 +1,25 @@
+{
+	"/": [
+		"src/routes/+page.ts",
+		"src/routes/+page.server.js"
+	],
+	"/about": [
+		"src/routes/about/+page.ts"
+	],
+	"/api/boat": [
+		"src/routes/api/boat/+page.server.ts"
+	],
+	"/api/posts.json": [
+		"src/routes/api/posts.json/+server.js"
+	],
+	"/contact": [],
+	"/login": [
+		"src/routes/login/+page.server.ts"
+	],
+	"/services": [
+		"src/routes/services/+page.server.js"
+	],
+	"/signup": [
+		"src/routes/signup/+page.ts"
+	]
+}

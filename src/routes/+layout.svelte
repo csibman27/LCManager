@@ -1,6 +1,6 @@
 <script>
     import {page} from "$app/stores"
-    import Hero from "../pages/Hero/+page.svelte";
+    import Hero from "../lib/Hero.svelte";
     let routeId;
     $: routeId=$page.route.id;
 
