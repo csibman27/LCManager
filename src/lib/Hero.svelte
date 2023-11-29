@@ -1,6 +1,6 @@
 <div class = "hero">
     <div class = "container">
-    <h2> The Plan </h2>
+    <h2> Lifecycle Manager </h2>
     <p> "Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement" </p>
   </div>
 </div>
@@ -11,6 +11,7 @@
     background-color: #ADD8E6;
     color: #000;
     text-align: center;
+    width: 100%;
 }
 
 h2 {
@@ -18,7 +19,5 @@ h2 {
     font-size: 2em;
 }
 
-.container {
-    width:100vw;
-    }
+
 </style>

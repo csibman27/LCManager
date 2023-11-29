@@ -12,9 +12,9 @@
         padding: 3em 0;
         background-color: #343434;
         color: white;
+        width: 100%;
     }
     .container {
         text-align: center;
-        width:100vw;
     }
 </style>
