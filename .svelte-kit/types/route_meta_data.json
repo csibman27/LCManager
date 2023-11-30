@@ -1,23 +1,28 @@
 {
+	"/(auth)": [],
 	"/": [
 		"src/routes/+page.ts",
 		"src/routes/+page.server.js"
 	],
-	"/about": [
-		"src/routes/about/+page.ts"
-	],
+	"/(auth)/about": [],
 	"/api/boat": [
 		"src/routes/api/boat/+page.server.ts"
 	],
 	"/api/posts.json": [
 		"src/routes/api/posts.json/+server.js"
 	],
-	"/contact": [],
+	"/(auth)/auth": [],
+	"/(auth)/contact": [
+		"src/routes/(auth)/contact/+page.server.js"
+	],
+	"/(auth)/dashboard": [],
+	"/(auth)/home": [],
 	"/login": [
 		"src/routes/login/+page.server.ts"
 	],
-	"/services": [
-		"src/routes/services/+page.server.js"
+	"/(auth)/profile": [],
+	"/(auth)/services": [
+		"src/routes/(auth)/services/+page.server.js"
 	],
 	"/signup": [
 		"src/routes/signup/+page.ts"

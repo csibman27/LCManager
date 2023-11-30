@@ -1,12 +1,5 @@
 <script>
-  import LoginForm from "$lib/LoginForm.svelte";
-import Content from "../lib/Content.svelte";
-  import Footer from "../lib/Footer.svelte";
-
+    import Filler from "../lib/Filler.svelte";
 </script>
 
-<h1> Test front end </h1>
-
-<Content />
-
-<Footer />
+<Filler />

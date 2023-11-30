@@ -1,7 +1,6 @@
-const getPost = async() => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/photos");
-    const data = await res.json();
-    console.log(data);
-    return data
-  }
-  getPost();
+import { redirect } from "@sveltejs/kit"
+
+export const load = async () => {
+    // Only protects Home page
+    throw redirect(302, "/login")
+}
