@@ -10,8 +10,3 @@ export const load = async () => {
         posts: getPosts(),
     }
 }
-
-
-
-
-

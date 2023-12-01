@@ -26,7 +26,7 @@ export const dictionary = {
 		"/(auth)/auth": [5,[2]],
 		"/(auth)/contact": [~6,[2]],
 		"/(auth)/dashboard": [7,[2]],
-		"/(auth)/home": [8,[2]],
+		"/(auth)/home": [~8,[2]],
 		"/login": [~12],
 		"/(auth)/profile": [9,[2]],
 		"/(auth)/services": [~10,[2]],

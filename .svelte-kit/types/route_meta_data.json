@@ -16,7 +16,9 @@
 		"src/routes/(auth)/contact/+page.server.js"
 	],
 	"/(auth)/dashboard": [],
-	"/(auth)/home": [],
+	"/(auth)/home": [
+		"src/routes/(auth)/home/+page.server.js"
+	],
 	"/login": [
 		"src/routes/login/+page.server.ts"
 	],

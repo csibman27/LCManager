@@ -9,7 +9,7 @@
 	<div class="grid">
 		<h1>API Call Servers sheet</h1>
 
-		<table id="customers">
+		<table id="servers">
 			<tr>
 				<th>Id</th>
 				<th>Name</th>
@@ -28,27 +28,27 @@
 </div>
 
 <style>
-	#customers {
+	#servers {
 		font-family: Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
 		width: 100%;
 	}
 
-	#customers td,
-	#customers th {
+	#servers td,
+	#servers th {
 		border: 1px solid #ddd;
 		padding: 8px;
 	}
 
-	#customers tr:nth-child(even) {
+	#servers tr:nth-child(even) {
 		background-color: #f2f2f2;
 	}
 
-	#customers tr:hover {
+	#servers tr:hover {
 		background-color: #ddd;
 	}
 
-	#customers th {
+	#servers th {
 		padding-top: 12px;
 		padding-bottom: 12px;
 		text-align: left;
