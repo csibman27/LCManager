@@ -26,6 +26,8 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const USERNAME: string;
+	export const PASSWORD: string;
 	export const LESSOPEN: string;
 	export const LANGUAGE: string;
 	export const USER: string;
@@ -36,6 +38,7 @@ declare module '$env/static/private' {
 	export const SHLVL: string;
 	export const npm_config_noproxy: string;
 	export const HOME: string;
+	export const OLDPWD: string;
 	export const DESKTOP_SESSION: string;
 	export const NVM_BIN: string;
 	export const npm_package_json: string;
@@ -60,7 +63,6 @@ declare module '$env/static/private' {
 	export const npm_config_prefix: string;
 	export const XDG_SESSION_CLASS: string;
 	export const DEFAULTS_PATH: string;
-	export const USERNAME: string;
 	export const TERM: string;
 	export const npm_config_cache: string;
 	export const GNOME_DESKTOP_SESSION_ID: string;
@@ -135,6 +137,8 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		USERNAME: string;
+		PASSWORD: string;
 		LESSOPEN: string;
 		LANGUAGE: string;
 		USER: string;
@@ -145,6 +149,7 @@ declare module '$env/dynamic/private' {
 		SHLVL: string;
 		npm_config_noproxy: string;
 		HOME: string;
+		OLDPWD: string;
 		DESKTOP_SESSION: string;
 		NVM_BIN: string;
 		npm_package_json: string;
@@ -169,7 +174,6 @@ declare module '$env/dynamic/private' {
 		npm_config_prefix: string;
 		XDG_SESSION_CLASS: string;
 		DEFAULTS_PATH: string;
-		USERNAME: string;
 		TERM: string;
 		npm_config_cache: string;
 		GNOME_DESKTOP_SESSION_ID: string;

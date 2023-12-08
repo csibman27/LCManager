@@ -1,3 +1,8 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+
 // const getPost = async() => {
 //     const res = await fetch("https://jsonplaceholder.typicode.com/photos");
 //     const data = await res.json();
@@ -28,11 +33,11 @@
 export const load = async () => {
 const getPosts = async() => {
 
-    let username = ""
-    let pwd = ""
+    const username = process.env.USERNAME;
+    const password = process.env.PASSWORD;
     const config = {
         headers: {
-            Authorization: 'Bearer {{username}} {{pwd}}',
+            Authorization: `Bearer ${username} ${password}`,
         },
     };
     
@@ -45,6 +50,7 @@ const getPosts = async() => {
        posts: getPosts(),
    }
 }
+
 
 // // Querry Version of checkmk
 // export const loading = async () => {
