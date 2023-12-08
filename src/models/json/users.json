@@ -1,0 +1,19 @@
+{
+    "users": [
+      {
+        "firstName": "Homer",
+        "lastName": "Simpson",
+        "email": "homer@simpson.com",
+        "password": "secret",
+        "_id": "d7e78595-78da-4656-8baa-442e91ea086e"
+      },
+      {
+        "firstName": "sysadmin",
+        "lastName": "sysadmin",
+        "email": "sysadmin@setu.ie",
+        "password": "secret",
+        "_id": "0a0fd095-7c09-4954-9f93-11111111111",
+        "permission": "ADMIN"
+      }
+    ]
+  }

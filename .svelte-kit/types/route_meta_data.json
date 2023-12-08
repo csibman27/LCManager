@@ -4,7 +4,9 @@
 		"src/routes/+page.ts",
 		"src/routes/+page.server.js"
 	],
-	"/(auth)/about": [],
+	"/(auth)/about": [
+		"src/routes/(auth)/about/+page.server.js"
+	],
 	"/api/boat": [
 		"src/routes/api/boat/+page.server.ts"
 	],
