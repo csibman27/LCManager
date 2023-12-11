@@ -1,9 +1,7 @@
-<script lang="ts">
+<script>
 	import LoginForm from "$lib/LoginForm.svelte";
-  import type { PageData } from './$types';
   import Filler from "$lib/Filler.svelte";  
-  export let data: PageData;
-  
+  console.log("Login screen is loaded")
 </script>
 
 <Filler />

@@ -1,19 +1,42 @@
 <script>
-    import { goto } from '$app/navigation';
-
-    let email = '';
-    let password = '';
+  import { library, icon } from '@fortawesome/fontawesome-svg-core'
+  import { faCamera } from '@fortawesome/free-solid-svg-icons'
+  import { goto } from '$app/navigation';
+	import { error } from '@sveltejs/kit';
 
     async function login() {
-        console.log(`attemting to log in email: ${email} with password: ${password}`);
-        goto('/donate');
+      
+      const email = document.getElementById('username');
+      const password = document.getElementById('password');
+      console.log(`attemting to log in email: ${email} with password: ${password}`);
+
+      fetch('/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          //redirect user to home
+          window.location.href = '/home';
+        } else {
+          // Display an error message
+          alert('Invalid username or password');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      })
     }
-    import { library, icon } from '@fortawesome/fontawesome-svg-core'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
+    
 
 library.add(faCamera)
 
 const camera = icon({ prefix: 'fas', iconName: 'camera' })
+console.log("This is from login form")
+let x=1
 </script>
 
 <section class="vh-100">
@@ -42,7 +65,7 @@ const camera = icon({ prefix: 'fas', iconName: 'camera' })
               </div>
   
               <div class="pt-1 mb-4">
-                <button class="btn btn-info btn-lg btn-block" type="button">Login</button>
+                <button on:click={login} class="btn btn-info btn-lg btn-block" type="button">Login</button>
               </div>
   
               <p class="text-center small mb-6 pb-lg-2"><a class="text-muted" href="https://bitwarden.com/">Forgot password? Use Password Manager</a></p>
