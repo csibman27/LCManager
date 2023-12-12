@@ -1,9 +1,9 @@
 {
     "users": [
       {
-        "firstName": "Homer",
-        "lastName": "Simpson",
-        "email": "homer@simpson.com",
+        "firstName": "Tibor",
+        "lastName": "Molnar",
+        "email": "csibman@hotmail.com",
         "password": "secret",
         "_id": "d7e78595-78da-4656-8baa-442e91ea086e"
       },

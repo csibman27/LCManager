@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { redirect } from '@sveltejs/kit';
 
-/** @type {import('./$types').Actions} */
+/** */
 export const actions = {
-    default: async ({ cookies, request }) => {
+    default:/** @param {import('./$types').RequestEvent} event */  async ({ cookies, request }) => {
         const formData = await request.formData();
         const email = formData.get("email");
         const password = formData.get("password");

@@ -14,28 +14,28 @@
             <form style="width: 24rem;">
   
               <div class="form-outline mb-4">
-                <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                <label class="form-label" for="form2Example18">First Name</label>
+                <input type="email" id="fname" class="form-control form-control-lg" />
+                <label class="form-label" for="fname">First Name</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                <label class="form-label" for="form2Example18">Last Name</label>
+                <input type="email" id="lname" class="form-control form-control-lg" />
+                <label class="form-label" for="lname">Last Name</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                <label class="form-label" for="form2Example18">Email address</label>
+                <input type="email" id="email" class="form-control form-control-lg" />
+                <label class="form-label" for="email">Email address</label>
               </div>
   
               <div class="form-outline mb-4">
-                <input type="password" id="form2Example28" class="form-control form-control-lg" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
-                <label class="form-label" for="form2Example28">Password</label>
+                <input type="password" name="password" id="password" class="form-control form-control-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+                <label class="form-label" for="password">Password</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" id="form2Example28" class="form-control form-control-lg" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
-                <label class="form-label" for="form2Example28">Verify Password</label>
+                <input type="password" name="password2" id="password2" class="form-control form-control-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+                <label class="form-label" for="password2">Verify Password</label>
               </div>
   
               <div class="pt-1 mb-4">
