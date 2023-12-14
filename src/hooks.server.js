@@ -1,7 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 import adapter from '@sveltejs/adapter-auto'
-import { actions } from './routes/login/proxy+page.server';
-
 
 let userLoggedIn = false;
 
@@ -10,7 +8,7 @@ export async function handle({ event, resolve }) {
 	if (event.route.id?.startsWith('/(auth)')) {
 		// protected route for all in (auth) except then the home page
         if(!userLoggedIn) {
-		throw redirect(302, "/login")
+		//throw redirect(302, "/login")
         }
         return await resolve(event)
 	}

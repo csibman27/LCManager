@@ -1,3 +1,4 @@
+import { goto } from '$app/navigation';
 import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').Actions} */
@@ -11,7 +12,7 @@ export const actions = {
 
         cookies.set("access", "true", { path: "/", sameSite:
     "strict" });
-    throw redirect(302, "/home");
+    goto("/home")
     }
     return {
         email,

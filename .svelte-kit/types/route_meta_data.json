@@ -1,7 +1,6 @@
 {
 	"/(auth)": [],
 	"/": [
-		"src/routes/+page.ts",
 		"src/routes/+page.server.js"
 	],
 	"/(auth)/about": [
@@ -17,11 +16,12 @@
 	"/(auth)/contact": [
 		"src/routes/(auth)/contact/+page.server.js"
 	],
-	"/(auth)/dashboard": [],
+	"/(auth)/dashboard": [
+		"src/routes/(auth)/dashboard/+page.server.js"
+	],
 	"/(auth)/home": [
 		"src/routes/(auth)/home/+page.server.js"
 	],
-	"/(auth)/home/test": [],
 	"/login": [
 		"src/routes/login/+page.server.js"
 	],

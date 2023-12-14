@@ -10,6 +10,10 @@
             href: "./home"
         },
         {
+            title: "Dashboard",
+            href: "./dashboard"
+        },
+        {
             title: "Services",
             href: "./services"
         },
