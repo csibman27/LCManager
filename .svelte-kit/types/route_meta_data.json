@@ -19,17 +19,18 @@
 	"/(auth)/dashboard": [
 		"src/routes/(auth)/dashboard/+page.server.js"
 	],
+	"/(auth)/detail": [],
 	"/(auth)/home": [
 		"src/routes/(auth)/home/+page.server.js"
 	],
-	"/login": [
-		"src/routes/login/+page.server.js"
+	"/(auth)/login": [
+		"src/routes/(auth)/login/+page.server.js"
 	],
 	"/(auth)/profile": [],
 	"/(auth)/services": [
 		"src/routes/(auth)/services/+page.server.js"
 	],
-	"/signup": [
-		"src/routes/signup/+page.ts"
+	"/(auth)/signup": [
+		"src/routes/(auth)/signup/+page.ts"
 	]
 }

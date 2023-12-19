@@ -1,7 +1,11 @@
+<script>
+    export let title = '';
+    export let subTitleHero = '';
+</script>
 <div class = "hero">
     <div class = "container">
-    <h2> Lifecycle Manager </h2>
-    <p> "Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement" </p>
+    <h2> {title} </h2>
+    <p> {subTitleHero} </p>
   </div>
 </div>
 

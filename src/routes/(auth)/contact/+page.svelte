@@ -1,4 +1,6 @@
 <script>
+	import Footer from '$lib/Footer.svelte';
+
 	export let data;
 	const { posts } = data;
     console.log(posts)
@@ -23,6 +25,8 @@
     <!-- {JSON.stringify(data)} -->
 	</div>
 </div>
+
+<Footer />
 
 <style>
 	#servers {

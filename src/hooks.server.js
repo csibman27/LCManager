@@ -1,4 +1,3 @@
-import { redirect } from '@sveltejs/kit';
 import adapter from '@sveltejs/adapter-auto'
 
 let userLoggedIn = false;
@@ -29,5 +28,6 @@ const config = {
 export function login() {
     userLoggedIn = true;
 }
+
 
 export default config;

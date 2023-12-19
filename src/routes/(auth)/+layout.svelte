@@ -24,6 +24,14 @@
         {
             title: "Contact",
             href: "./contact"
+        },
+        { 
+            title: "Login",
+            href: "./login"
+        },
+        { 
+            title: "Signup",
+            href: "./signup"
         }
     ];
 </script>
@@ -39,7 +47,7 @@
             {/each}
         </ul>
     </nav>
-    <Hero />
+    <!-- <Hero /> -->
     <slot/>
   </div>
 

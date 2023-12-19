@@ -3,7 +3,7 @@
 </script>
 <footer>
     <div class="container">
-        Copyright © TSSG - {year}
+        Copyright © tmolnar - {year}
     </div>
 </footer>
 

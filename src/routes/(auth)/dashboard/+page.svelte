@@ -1,4 +1,5 @@
 <script>
+	import Footer from '$lib/Footer.svelte';
     import { onMount, onDestroy } from 'svelte';
   
     let machines = [];
@@ -60,7 +61,7 @@
         server_services: [],
         };
     };
-  
+    
     // Function to update a machine
     const updateMachine = (uid, newName, newType, newDesc, newOs, newIdrac, newServices) => {
       machines = machines.map((machine) =>
@@ -93,7 +94,7 @@
       <div class="field is-horizontal">
         <div class="field-label is-normal">
             <!-- svelte-ignore a11y-label-has-associated-control -->
-            <label class="label"> Name </label>
+            <label class="label"> Server Name </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -102,18 +103,18 @@
                 </div>
             </div>
         </div>
-        <label class="label"> Name </label>
+        <!-- svelte-ignore a11y-label-has-associated-control -->
+        <label class="label"> Server IP </label>
     </div>
     <div class="field-body">
         <div class="field">
-            <p class="control"><input class="input" type="text" placeholder="Server Name" bind:value="{newMachine.server_ip}" />
+            <p class="control"><input class="input" type="text" placeholder="Server IP" bind:value="{newMachine.server_ip}" />
             </p>
         </div>
         <div class="pt-1 mb-4">
-            <button on:click="{addMachine}">Add Machine</button>
+            <button on:click="{addMachine}"type="submit" class="btn btn-primary">Add Machine</button>
           </div>
     </div>
-
     <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -126,6 +127,7 @@
             <th scope="col">Server Services</th>
             <th scope="col">FUNCTIONS</th>
           </tr>
+            <p></p>
         </thead>
         <tbody>
             {#each machines as machine (machine.uid)}
@@ -138,8 +140,8 @@
             <td>{machine.server_desc}</td>
             <td>{machine.server_desc}</td>
             <td>{machine.server_desc}</td>
-            <button on:click="{() => updateMachine(machine.uid, machine.server_name, machine.server_ip)}">Update</button>
-          <button on:click="{() => deleteMachine(machine.uid)}">Delete</button>
+            <button type="button" class="btn btn-outline-info btn-sm" on:click="{() => updateMachine(machine.uid, machine.server_name, machine.server_ip)}">Update</button>
+          <button type="button" class="btn btn-outline-danger btn-sm" on:click="{() => deleteMachine(machine.uid)}">Delete</button>
           </tr>
           {/each}  
         </tbody>
@@ -177,6 +179,8 @@
         </tbody>
       </table>
   </main>
+
+  <Footer />
 
 
   
