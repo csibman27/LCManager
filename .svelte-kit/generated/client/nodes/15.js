@@ -1,1 +1,3 @@
-export { default as component } from "../../../../src/routes/api/boat/+page.svelte";
+import * as universal from "../../../../src/routes/(auth)/signup/+page.ts";
+export { universal };
+export { default as component } from "../../../../src/routes/(auth)/signup/+page.svelte";

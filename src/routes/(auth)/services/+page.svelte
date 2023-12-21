@@ -11,6 +11,35 @@
 	<div class="grid">
 		<h1>API Call Servers sheet</h1>
 
+		<main>
+			<h1>Machines</h1>
+		  
+			<button on:click={data}>Add Machine</button>
+		  
+			{#if data.length == 0}
+			  <p>No machines found.</p>
+			{:else}
+			  <table>
+				<thead>
+				  <tr>
+					<th>Name</th>
+					<th>Actions</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  {#each data as d}
+					<tr>
+					  <td>{d.name}</td>
+					  <td>
+						<button on:click={() => deleteMachine(d.id)}>Delete</button>
+					  </td>
+					</tr>
+				  {/each}
+				</tbody>
+			  </table>
+			{/if}
+		  </main>
+
 		<table id="servers">
 			<tr>
 				<th>Id</th>

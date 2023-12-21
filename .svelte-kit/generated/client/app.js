@@ -24,16 +24,16 @@ export const server_loads = [];
 export const dictionary = {
 		"/": [~4],
 		"/(auth)/about": [~5,[2]],
-		"/api/boat": [~15],
-		"/(auth)/auth": [6,[2]],
-		"/(auth)/contact": [~7,[2]],
-		"/(auth)/dashboard": [~8,[2]],
-		"/(auth)/detail": [9,[2]],
-		"/(auth)/home": [~10,[2],[,3]],
-		"/(auth)/login": [~11,[2]],
-		"/(auth)/profile": [12,[2]],
-		"/(auth)/services": [~13,[2]],
-		"/(auth)/signup": [14,[2]]
+		"/(auth)/api/boat": [~6,[2]],
+		"/(auth)/auth": [7,[2]],
+		"/(auth)/contact": [~8,[2]],
+		"/(auth)/dashboard": [~9,[2]],
+		"/(auth)/detail": [10,[2]],
+		"/(auth)/home": [~11,[2],[,3]],
+		"/(auth)/login": [~12,[2]],
+		"/(auth)/profile": [13,[2]],
+		"/(auth)/services": [~14,[2]],
+		"/(auth)/signup": [15,[2]]
 	};
 
 export const hooks = {

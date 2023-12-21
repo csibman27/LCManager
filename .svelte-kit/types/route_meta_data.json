@@ -6,11 +6,11 @@
 	"/(auth)/about": [
 		"src/routes/(auth)/about/+page.server.js"
 	],
-	"/api/boat": [
-		"src/routes/api/boat/+page.server.ts"
+	"/(auth)/api/boat": [
+		"src/routes/(auth)/api/boat/+page.server.ts"
 	],
-	"/api/posts.json": [
-		"src/routes/api/posts.json/+server.js"
+	"/(auth)/api/posts.json": [
+		"src/routes/(auth)/api/posts.json/+server.js"
 	],
 	"/(auth)/auth": [],
 	"/(auth)/contact": [

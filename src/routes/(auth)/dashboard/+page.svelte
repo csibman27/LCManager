@@ -1,186 +1,263 @@
 <script>
+	import Card from '$lib/Card.svelte';
 	import Footer from '$lib/Footer.svelte';
-    import { onMount, onDestroy } from 'svelte';
-  
-    let machines = [];
-    let newMachine = { 
-        uid: '',
-        server_name: '',
-        server_ip: '',
-        server_desc: '',
-        server_os: '',
-        server_idrac: '',
-        server_services: []
-    };
-  
-    // Simulated API call to fetch initial machine list
-    const fetchMachines = () => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const initialMachines = [
-            { uid: 1, server_name: 'RonaldOpenstack', server_ip: '192.168.1.1' },
-            { uid: 2, server_name: 'Cloud-Event-Holder', server_ip: '193.11.911.119' },
-            { uid: 3, server_name: 'WestServ-11', server_ip: '132.0.111.43' }
-          ];
-          resolve(initialMachines);
-        }, 1000);
-      });
-    };
-  
-    // Lifecycle hook for initial data fetch
-    onMount(async () => {
-      machines = await fetchMachines();
-    });
-  
-    // Lifecycle hook for cleanup
-    onDestroy(() => {
-      // Execute any cleanup tasks here
-    });
-  
-    // Function to add a new machine
-    const addMachine = () => {
-      machines = [
-        ...machines,
-        {
-            uid: machines.length + 1,
-            server_name: newMachine.server_name,
-            server_ip: newMachine.server_ip,
-            server_desc: newMachine.server_desc,
-            server_os: newMachine.server_os,
-            server_idrac: newMachine.server_idrac,
-            server_services: newMachine.server_services
-        }
-      ];
-      newMachine = {
-        uid: '',
-        server_name: '',
-        server_ip: '',
-        server_desc: '',
-        server_os: '',
-        server_idrac: '',
-        server_services: [],
-        };
-    };
+	import Hero from '$lib/Hero.svelte';
+  import { v4 as uuidv4 } from 'uuid';
+  import { createEventDispatcher } from "svelte";
+
+    const dispatch = createEventDispatcher(); // used to communicate with parent component
     
-    // Function to update a machine
-    const updateMachine = (uid, newName, newType, newDesc, newOs, newIdrac, newServices) => {
-      machines = machines.map((machine) =>
-        machine.uid === uid ? { ...machine,
-            server_name: newName,
-            server_ip: newType,
-            server_desc: newDesc,
-            server_os: newOs,
-            server_idrac: newIdrac,
-            server_services: newServices
-        } : machine
-      );
-    };
-  
-    // Function to delete a machine
-    const deleteMachine = (uid) => {
-      machines = machines.filter((machine) => machine.uid !== uid);
-    };
-  </script>
-  
-  <main class="section">
-    <div class="container">
-        <h1 class="title"><center>Dashboard</center></h1>
-    </div>
-        
-    <h2 class="title">Machine List</h2>
-  
-    <div class="box">
-      <h2 class=title>Add New Machine</h2>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <!-- svelte-ignore a11y-label-has-associated-control -->
-            <label class="label"> Server Name </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control"><input class="input" type="text" placeholder="Server Name" bind:value="{newMachine.server_name}" />
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- svelte-ignore a11y-label-has-associated-control -->
-        <label class="label"> Server IP </label>
-    </div>
-    <div class="field-body">
-        <div class="field">
-            <p class="control"><input class="input" type="text" placeholder="Server IP" bind:value="{newMachine.server_ip}" />
-            </p>
-        </div>
-        <div class="pt-1 mb-4">
-            <button on:click="{addMachine}"type="submit" class="btn btn-primary">Add Machine</button>
-          </div>
-    </div>
-    <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Server Name</th>
-            <th scope="col">Server IP</th>
-            <th scope="col">Server Description</th>
-            <th scope="col">Server OS</th>
-            <th scope="col">Server Idrac</th>
-            <th scope="col">Server Services</th>
-            <th scope="col">FUNCTIONS</th>
-          </tr>
-            <p></p>
-        </thead>
-        <tbody>
-            {#each machines as machine (machine.uid)}
-          <tr>
-            <th scope="row">1</th>
-            
-            <td>{machine.server_name}</td>
-            <td>{machine.server_ip}</td>
-            <td>{machine.server_desc}</td>
-            <td>{machine.server_desc}</td>
-            <td>{machine.server_desc}</td>
-            <td>{machine.server_desc}</td>
-            <button type="button" class="btn btn-outline-info btn-sm" on:click="{() => updateMachine(machine.uid, machine.server_name, machine.server_ip)}">Update</button>
-          <button type="button" class="btn btn-outline-danger btn-sm" on:click="{() => deleteMachine(machine.uid)}">Delete</button>
-          </tr>
-          {/each}  
-        </tbody>
-        
-      </table>
+    let showModal = false; // determines if the modal is visible
+    
+    // function to toggle the modal visibility
+    function toggleModal() {
+      showModal = !showModal;
+    }
+    
+    // handle close event and dispatch it to the parent component
+    function handleClose() {
+      toggleModal();
       
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-  </main>
+      dispatch("close");
+    }
 
-  <Footer />
+    let titleDash = "Add New Machine"
+    let selectedItemId = null;
 
+    function handleClick(uid) {
+       selectedItemId = uid;
+    }
+
+
+    
+// Declare global and local variables
+let machines = [];
+let uid = "";
+let name = "";
+let ip = "";
+let os = "";
+let idrac = "";
+let desc = "";
+
+
+
+// Function for add a machine
+function addMachine() {
+    const machine = {
+        uid: uuidv4(), // machines.length + 1,
+        name: name,
+        ip: ip,
+        os: os,
+        idrac: idrac,
+        desc: desc,
+        date: new Date().toLocaleString("en-IE"),
+    };
+    machines.push(machine);
+    machines = [...machines];
+    name = "";
+    ip = "";
+    os = "";
+    idrac = "";
+    desc = "";
+    
+    console.log(machine)
+}
+
+// Delete a machine from the list
+const deleteMachine = (id) => {
+    if (confirm('Are you sure you want to delete this machine?')) {
+      machines = machines.filter((machine) => machine.uid !== id);
+    }
+  };
+
+addMachine(name = "Server1", ip = "192.168.89.11", os = "ubuntu 22.04 LTS", idrac= "10.1.1.12", desc="services available")
+addMachine(name = "Server2", ip = "192.168.89.1", os = "ubuntu 20.04 LTS", idrac= "10.1.22.11", desc="services available this and that")
+
+function submit(field) {
+return ({detail: newValue}) => {
+  // IRL: POST value to server here
+  console.log(`updated ${field}, new value is: "${newValue}"`)
+}
+}
+  
+
+</script>
+<style>
+  .btn {
+    background-color: antiquewhite;
+  border: none;
+  color: black;
+  padding: 7px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  border-radius: 8px;
+  }
+  .button:hover {
+    background-color: burlywood;
+  color: white;
+  }
+  /* Modal styles */
+  .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+</style>
+
+<Hero title={'Lifecycle Manager'} subTitleHero={'"Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement"'} />
+
+
+<h1 class="title">
+Add a Server
+</h1>
+<Card>
+<div class="poll">
+<h3> {titleDash} </h3>
+</div>
+</Card>
+
+
+<!-- Function Layout -->
+<div class="section box">
+<div class="field">
+<label for="name" class="label">Server Name</label>
+<div class="control has-icons-left has-icons-right">
+  <input bind:value={name} id="name" class="input" type="text" placeholder="Server Name">
+  <span class="icon is-left">
+    <i class="fas fa-server"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+</div>
+
+<div class="field">
+<label for="ip" class="label">Ipv4 Address</label>
+<div class="control has-icons-left has-icons-right">
+  <input bind:value={ip} id="ip" class="input" type="text" placeholder="Ipv4 Address">
+  <span class="icon is-left">
+    <i class="fa-solid fa-globe"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+</div>
+
+<div class="field">
+<label for="os" class="label">Operating System</label>
+<div class="control has-icons-left has-icons-right">
+  <input bind:value={os} id="os" class="input" type="text" placeholder="OS">
+  <span class="icon is-left">
+    <i class="fa-solid fa-globe"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+</div>
+
+<div class="field">
+<label for="idrac" class="label">Idarc</label>
+<div class="control has-icons-left has-icons-right">
+  <input bind:value={idrac} id="idrac" class="input" type="text" placeholder="Idrac">
+  <span class="icon is-left">
+    <i class="fa-solid fa-globe"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+</div>
+
+<div class="field">
+<label for="desc" class="label">Description</label>
+<div class="control has-icons-left has-icons-right">
+  <input bind:value={desc} id="desc" class="input" type="text" placeholder="Description">
+  <span class="icon is-left">
+    <i class="fa-solid fa-globe"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+</div>
+
+<button on:click={addMachine} class="button">Add Machine</button> 
+</div>
+
+
+
+<!-- List layout -->
+
+<div class="section box">
+<div class="name is-6">List of Machines</div>
+<table class="table is-fullwidth">
+  <Card>
+  <thead>
+    <th>Server Name</th>
+    <th>Ip Address</th>
+    <th>OS</th>
+    <th>Idrac</th>
+    <th>Description</th>
+    <th>Date Server Added</th>
+  </thead>
+  
+  <tbody>
+    {#each machines as machine}
+    <tr>
+        <td> {machine.name} </td>
+        <td> {machine.ip} </td>
+        <td> {machine.os} </td>
+        <td> {machine.idrac} </td>
+        <td> {machine.desc} </td>
+        <td> {machine.date} </td>
+        <button class:machine={selectedItemId === machine.uid ? 'selected' : ''} class="button"
+        on:click={() => handleClick(machine.uid)} on:click={toggleModal}>Details</button>
+        <button class="button" on:click={deleteMachine(machine.uid)}>Update</button>
+        <button class="button" on:click={deleteMachine(machine.uid)}>Delete</button>
+    </tr>
+    {/each}
+  </tbody>
+  </Card>
+</table>
+</div>
 
   
+  <!-- Modal -->
+  {#if showModal}
+    <div class="modal">
+      <div class="modal-content">
+        {#if selectedItemId !== null}
+        <h2>More Information:</h2>
+        <p>{machines.find(machine => machine.uid === selectedItemId).services}</p>
+        {/if}
+        <slot />
+        <button on:click={handleClose}>Close</button>
+      </div>
+    </div>
+  {/if}
+  
+  
+
+
+
+
+<Footer />
