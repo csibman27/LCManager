@@ -32,6 +32,7 @@
     
 // Declare global and local variables
 let machines = [];
+let currentMachines = "";
 let uid = "";
 let name = "";
 let ip = "";
@@ -40,7 +41,7 @@ let idrac = "";
 let desc = "";
 
 
-
+const date = new Date();
 // Function for add a machine
 function addMachine() {
     const machine = {
@@ -50,7 +51,7 @@ function addMachine() {
         os: os,
         idrac: idrac,
         desc: desc,
-        date: new Date().toLocaleString("en-IE"),
+        date: date.toISOString() //date in ISO 8601 format.
     };
     machines.push(machine);
     machines = [...machines];
@@ -63,6 +64,10 @@ function addMachine() {
     console.log(machine)
 }
 
+addMachine(name = "Server1", ip = "192.168.89.11", os = "ubuntu 22.04 LTS", idrac= "10.1.1.12", desc="services available")
+addMachine(name = "Server2", ip = "192.168.89.1", os = "ubuntu 20.04 LTS", idrac= "10.1.22.11", desc="services available this and that")
+
+
 // Delete a machine from the list
 const deleteMachine = (id) => {
     if (confirm('Are you sure you want to delete this machine?')) {
@@ -70,34 +75,25 @@ const deleteMachine = (id) => {
     }
   };
 
-addMachine(name = "Server1", ip = "192.168.89.11", os = "ubuntu 22.04 LTS", idrac= "10.1.1.12", desc="services available")
-addMachine(name = "Server2", ip = "192.168.89.1", os = "ubuntu 20.04 LTS", idrac= "10.1.22.11", desc="services available this and that")
 
-function submit(field) {
-return ({detail: newValue}) => {
-  // IRL: POST value to server here
-  console.log(`updated ${field}, new value is: "${newValue}"`)
+// Edit a machine of the list
+function editMachine(index) {
+  let newMachines = [...machines].filter((val, i) => {
+    console.log(i, index, i !== index);
+    return i !== index;
+
+  });
+  currentMachines = machines[index];
+  machines = newMachines;
 }
-}
-  
+
+
 
 </script>
 <style>
   .btn {
-    background-color: antiquewhite;
-  border: none;
-  color: black;
-  padding: 7px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-  border-radius: 8px;
-  }
-  .button:hover {
-    background-color: burlywood;
-  color: white;
+    bottom: 20px;
+    position:sticky;
   }
   /* Modal styles */
   .modal {
@@ -118,22 +114,28 @@ return ({detail: newValue}) => {
       padding: 20px;
       border-radius: 5px;
     }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.4rem;
+    }
+    .actions i:hover {
+      color: coral;
+    }
+    .actions i {
+      cursor: pointer;
+    }
 </style>
 
 <Hero title={'Lifecycle Manager'} subTitleHero={'"Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement"'} />
 
-
-<h1 class="title">
-Add a Server
-</h1>
-<Card>
 <div class="poll">
 <h3> {titleDash} </h3>
 </div>
-</Card>
-
 
 <!-- Function Layout -->
+<Card>
 <div class="section box">
 <div class="field">
 <label for="name" class="label">Server Name</label>
@@ -199,49 +201,64 @@ Add a Server
   </span>
 </div>
 </div>
-
-<button on:click={addMachine} class="button">Add Machine</button> 
+<br>
+<button type="button" on:click={addMachine} class="btn btn-primary">Add Machine</button>
 </div>
 
-
-
-<!-- List layout -->
-
-<div class="section box">
-<div class="name is-6">List of Machines</div>
-<table class="table is-fullwidth">
-  <Card>
-  <thead>
-    <th>Server Name</th>
-    <th>Ip Address</th>
-    <th>OS</th>
-    <th>Idrac</th>
-    <th>Description</th>
-    <th>Date Server Added</th>
-  </thead>
+</Card> 
   
-  <tbody>
-    {#each machines as machine}
-    <tr>
-        <td> {machine.name} </td>
-        <td> {machine.ip} </td>
-        <td> {machine.os} </td>
-        <td> {machine.idrac} </td>
-        <td> {machine.desc} </td>
-        <td> {machine.date} </td>
-        <button class:machine={selectedItemId === machine.uid ? 'selected' : ''} class="button"
-        on:click={() => handleClick(machine.uid)} on:click={toggleModal}>Details</button>
-        <button class="button" on:click={deleteMachine(machine.uid)}>Update</button>
-        <button class="button" on:click={deleteMachine(machine.uid)}>Delete</button>
-    </tr>
-    {/each}
-  </tbody>
-  </Card>
-</table>
+  <div class="mainContainer">
+    <div class="headerContainer">
+      <h2>Server List</h2>
+      <button>
+        <i class="fa-regular fa-floppy disk" />
+        <p>Save</p>
+      </button>
+    </div>
+    <table class="table is-fullwidth">
+      <tr>        
+        <th>Server Name</th>
+        <th>Ip Address</th>
+        <th>OS</th>
+        <th>Idrac</th>
+        <th>Description</th>
+        <th>Date Server Added</th>
+      </tr>
+    
+      {#each machines as machine, index}
+      <tr>
+        <td>{index + 1}. {machine.name}</td>
+        <td>{machine.ip}</td>
+        <td>{machine.os}</td>
+        <td>{machine.idrac}</td>
+        <td>{machine.desc}</td>
+        <td>{machine.date}</td>
+        <div class="actions">
+        <!-- more info -->
+        <i class:machine={selectedItemId === machine.uid ? 'selected' : ''}
+        on:click={() => handleClick(machine.uid)} on:click={toggleModal}
+        on:keydown={() => {}}
+        class="fa-regular fa-map"/>
+        <!-- edit -->
+        <i on:click={() => {
+          editMachine(index);
+        }}
+        on:keydown={() => {}}
+        class="fa-regular fa-pen-to-square" />
+        <!-- delete -->
+        <i on:click={deleteMachine(machine.uid)}
+        on:keydown={() => {}}
+        class="fa-regular fa-trash-can" />
+        <!-- <button class="button" on:click={deleteMachine(machine.uid)}>Delete</button> -->
+      </div>
+      </tr>
+      {/each}
+    </table>
+
 </div>
 
   
-  <!-- Modal -->
+  <!-- Modal for pop up menu-->
   {#if showModal}
     <div class="modal">
       <div class="modal-content">

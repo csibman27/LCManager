@@ -47,7 +47,7 @@ console.log(form)
               </div>
   
               <p class="text-center small mb-6 pb-lg-2"><a class="text-muted" href="https://bitwarden.com/">Forgot password? Use Password Manager</a></p>
-              <p class="text-center">Don't have an account? <a href="/signup" class="link-info">Register here</a></p>
+              <!-- <p class="text-center">Don't have an account? <a href="/signup" class="link-info">Register here</a></p> -->
   
             </form>
           </div>
