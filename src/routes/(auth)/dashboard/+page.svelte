@@ -256,7 +256,6 @@ function editMachine(index) {
     </table>
 
 </div>
-
   
   <!-- Modal for pop up menu-->
   {#if showModal}
