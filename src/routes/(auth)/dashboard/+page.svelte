@@ -4,6 +4,18 @@
 	import Hero from '$lib/Hero.svelte';
   import { v4 as uuidv4 } from 'uuid';
   import { createEventDispatcher } from "svelte";
+  import InPlaceEdit from "$lib/InPlaceEdit.svelte";
+
+let title = "This is an editable title"
+let summary = "This is some editable text"
+let summary1 = "This is also an editable text"
+
+function submit(field) {
+  return ({detail: newValue}) => {
+    // IRL: POST value to server here
+    console.log(`updated ${field}, new value is: "${newValue}"`)
+  }
+}
 
     const dispatch = createEventDispatcher(); // used to communicate with parent component
     
@@ -88,7 +100,6 @@ function editMachine(index) {
 }
 
 
-
 </script>
 <style>
   .btn {
@@ -117,8 +128,9 @@ function editMachine(index) {
     .actions {
       display: flex;
       align-items: center;
-      gap: 20px;
-      font-size: 1.4rem;
+      gap: 25px;
+      font-size: 1.5rem;
+      margin-top: 5%;
     }
     .actions i:hover {
       color: coral;
@@ -127,6 +139,7 @@ function editMachine(index) {
       cursor: pointer;
     }
 </style>
+
 
 <Hero title={'Lifecycle Manager'} subTitleHero={'"Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement"'} />
 
@@ -210,13 +223,11 @@ function editMachine(index) {
   <div class="mainContainer">
     <div class="headerContainer">
       <h2>Server List</h2>
-      <button>
-        <i class="fa-regular fa-floppy disk" />
-        <p>Save</p>
-      </button>
+      
     </div>
     <table class="table is-fullwidth">
-      <tr>        
+      <tr>
+        <th>Index</th>        
         <th>Server Name</th>
         <th>Ip Address</th>
         <th>OS</th>
@@ -227,11 +238,12 @@ function editMachine(index) {
     
       {#each machines as machine, index}
       <tr>
-        <td>{index + 1}. {machine.name}</td>
-        <td>{machine.ip}</td>
-        <td>{machine.os}</td>
-        <td>{machine.idrac}</td>
-        <td>{machine.desc}</td>
+        <td>{index + 1}.</td>
+        <td><InPlaceEdit bind:value={machine.name} on:submit={submit('text')}/></td>
+        <td><InPlaceEdit bind:value={machine.ip} on:submit={submit('text')}/></td>
+        <td><InPlaceEdit bind:value={machine.os} on:submit={submit('text')}/></td>
+        <td><InPlaceEdit bind:value={machine.idrac} on:submit={submit('text')}/></td>
+        <td><InPlaceEdit bind:value={machine.desc} on:submit={submit('text')}/></td>
         <td>{machine.date}</td>
         <div class="actions">
         <!-- more info -->
@@ -239,12 +251,12 @@ function editMachine(index) {
         on:click={() => handleClick(machine.uid)} on:click={toggleModal}
         on:keydown={() => {}}
         class="fa-regular fa-map"/>
-        <!-- edit -->
+        <!-- save -->
         <i on:click={() => {
           editMachine(index);
         }}
         on:keydown={() => {}}
-        class="fa-regular fa-pen-to-square" />
+        class="fa-regular fa-floppy-disk" />
         <!-- delete -->
         <i on:click={deleteMachine(machine.uid)}
         on:keydown={() => {}}
