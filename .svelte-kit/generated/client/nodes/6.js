@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/(auth)/api/boat/+page.svelte";
+export { default as component } from "../../../../src/routes/protected/api/boat/+page.svelte";

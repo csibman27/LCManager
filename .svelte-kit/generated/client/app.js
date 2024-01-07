@@ -23,17 +23,17 @@ export const server_loads = [];
 
 export const dictionary = {
 		"/": [~4],
-		"/(auth)/about": [~5,[2]],
-		"/(auth)/api/boat": [~6,[2]],
-		"/(auth)/auth": [7,[2]],
-		"/(auth)/contact": [~8,[2]],
-		"/(auth)/dashboard": [~9,[2]],
-		"/(auth)/detail": [10,[2]],
-		"/(auth)/home": [~11,[2],[,3]],
-		"/(auth)/login": [~12,[2]],
-		"/(auth)/profile": [13,[2]],
-		"/(auth)/services": [~14,[2]],
-		"/(auth)/signup": [15,[2]]
+		"/protected/about": [~5,[2]],
+		"/protected/api/boat": [~6,[2]],
+		"/protected/auth": [7,[2]],
+		"/protected/contact": [~8,[2]],
+		"/protected/dashboard": [~9,[2]],
+		"/protected/detail": [10,[2]],
+		"/protected/home": [~11,[2],[,3]],
+		"/protected/login": [~12,[2]],
+		"/protected/profile": [13,[2]],
+		"/protected/services": [~14,[2]],
+		"/protected/signup": [15,[2]]
 	};
 
 export const hooks = {

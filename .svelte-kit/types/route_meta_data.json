@@ -1,36 +1,37 @@
 {
-	"/(auth)": [],
 	"/": [
 		"src/routes/+page.server.js"
 	],
-	"/(auth)/about": [
-		"src/routes/(auth)/about/+page.server.js"
+	"/protected": [],
+	"/protected/about": [
+		"src/routes/protected/about/+page.server.js"
 	],
-	"/(auth)/api/boat": [
-		"src/routes/(auth)/api/boat/+page.server.ts"
+	"/protected/api/boat": [
+		"src/routes/protected/api/boat/+page.server.ts"
 	],
-	"/(auth)/api/posts.json": [
-		"src/routes/(auth)/api/posts.json/+server.js"
+	"/protected/api/posts.json": [
+		"src/routes/protected/api/posts.json/+server.js"
 	],
-	"/(auth)/auth": [],
-	"/(auth)/contact": [
-		"src/routes/(auth)/contact/+page.server.js"
+	"/protected/auth": [],
+	"/protected/contact": [
+		"src/routes/protected/contact/+page.server.js"
 	],
-	"/(auth)/dashboard": [
-		"src/routes/(auth)/dashboard/+page.server.js"
+	"/protected/dashboard": [
+		"src/routes/protected/dashboard/+page.server.js"
 	],
-	"/(auth)/detail": [],
-	"/(auth)/home": [
-		"src/routes/(auth)/home/+page.server.js"
+	"/protected/detail": [],
+	"/protected/home": [
+		"src/routes/protected/home/+page.server.js"
 	],
-	"/(auth)/login": [
-		"src/routes/(auth)/login/+page.server.js"
+	"/protected/login": [
+		"src/routes/protected/login/+page.server.js"
 	],
-	"/(auth)/profile": [],
-	"/(auth)/services": [
-		"src/routes/(auth)/services/+page.server.js"
+	"/protected/logout": [
+		"src/routes/protected/logout/+server.js"
 	],
-	"/(auth)/signup": [
-		"src/routes/(auth)/signup/+page.ts"
-	]
+	"/protected/profile": [],
+	"/protected/services": [
+		"src/routes/protected/services/+page.server.js"
+	],
+	"/protected/signup": []
 }
