@@ -148,13 +148,14 @@ function editMachine(index) {
 </div>
 
 <!-- Function Layout -->
-<Card>
-<div class="section box">
-<div class="field">
-<label for="name" class="label">Server Name</label>
+
+<form class="max-w-sm mx-auto">
+<div class="mb-5">
+<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Server Name</label>
 <div class="control has-icons-left has-icons-right">
-  <input bind:value={name} id="name" class="input" type="text" placeholder="Server Name">
-  <span class="icon is-left">
+  <input bind:value={name} type="text" id="name" placeholder="Server Name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <!-- here -->
+  <span class="icon is-right">
     <i class="fas fa-server"></i>
   </span>
   <span class="icon is-right">
@@ -215,10 +216,10 @@ function editMachine(index) {
 </div>
 </div>
 <br>
-<button type="button" on:click={addMachine} class="btn btn-primary">Add Machine</button>
-</div>
 
-</Card> 
+</form>
+
+<button type="button" on:click={addMachine} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Machine</button> 
   
   <div class="mainContainer">
     <div class="headerContainer">

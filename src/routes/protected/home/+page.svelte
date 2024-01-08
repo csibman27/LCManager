@@ -5,6 +5,7 @@
     export let data;
 	  const { posts } = data;
 </script>
+
   
 <Content />
   
