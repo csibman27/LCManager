@@ -6,9 +6,13 @@
   import { createEventDispatcher } from "svelte";
   import InPlaceEdit from "$lib/InPlaceEdit.svelte";
 
+
+// Declare initial global titles
 let title = "This is an editable title"
 let summary = "This is some editable text"
 let summary1 = "This is also an editable text"
+let titleList = "Server List"
+let titleDash = "Add New Machine"
 
 function submit(field) {
   return ({detail: newValue}) => {
@@ -33,7 +37,6 @@ function submit(field) {
       dispatch("close");
     }
 
-    let titleDash = "Add New Machine"
     let selectedItemId = null;
 
     function handleClick(uid) {
@@ -144,86 +147,51 @@ function editMachine(index) {
 <Hero title={'Lifecycle Manager'} subTitleHero={'"Optimizing Server Lifecycle Management in the Data Center: From Planning to Retirement"'} />
 
 <div class="poll">
-<h3> {titleDash} </h3>
+<h3 class="text-2xl font-light"> {titleDash} </h3>
 </div>
 
 <!-- Function Layout -->
 
-<form class="max-w-sm mx-auto">
-<div class="mb-5">
-<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Server Name</label>
-<div class="control has-icons-left has-icons-right">
-  <input bind:value={name} type="text" id="name" placeholder="Server Name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <!-- here -->
-  <span class="icon is-right">
-    <i class="fas fa-server"></i>
-  </span>
-  <span class="icon is-right">
-    <i class="fas fa-check"></i>
-  </span>
+<div class="space-y-3">
+  <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Server Name</label>
+  <div class="pl-2 border border-slate-300 rounded-md">
+    <label for="servername"><i class="fas fa-server text-gray-500"></i></label>
+    <input bind:value={name} type="text" id="name" name="email" placeholder="Server Name"
+        class="px-2 py-2 w-96 border-0 focus:outline-0" />
 </div>
+<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ipv4 Address</label>
+  <div class="pl-2 border border-slate-300 rounded-md">
+    <label for="ip"><i class="fa-solid fa-globe text-gray-500"></i></label>
+    <input bind:value={ip} type="text" id="ip" name="ip" placeholder="Ipv4 Address"
+        class="px-2 py-2 w-96 border-0 focus:outline-0" />
 </div>
-
-<div class="field">
-<label for="ip" class="label">Ipv4 Address</label>
-<div class="control has-icons-left has-icons-right">
-  <input bind:value={ip} id="ip" class="input" type="text" placeholder="Ipv4 Address">
-  <span class="icon is-left">
-    <i class="fa-solid fa-globe"></i>
-  </span>
-  <span class="icon is-right">
-    <i class="fas fa-check"></i>
-  </span>
+<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Operating System</label>
+  <div class="pl-2 border border-slate-300 rounded-md">
+    <label for="ip"><i class="fas fa-desktop text-gray-500"></i></label>
+    <input bind:value={os} type="text" id="os" name="os" placeholder="Operating System"
+        class="px-2 py-2 w-96 border-0 focus:outline-0" />
 </div>
+<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Idrac</label>
+  <div class="pl-2 border border-slate-300 rounded-md">
+    <label for="ip"><i class="fa-solid fa-globe text-gray-500"></i></label>
+    <input bind:value={idrac} type="text" id="idrac" name="idrac" placeholder="Idrac"
+        class="px-2 py-2 w-96 border-0 focus:outline-0" />
 </div>
-
-<div class="field">
-<label for="os" class="label">Operating System</label>
-<div class="control has-icons-left has-icons-right">
-  <input bind:value={os} id="os" class="input" type="text" placeholder="OS">
-  <span class="icon is-left">
-    <i class="fa-solid fa-globe"></i>
-  </span>
-  <span class="icon is-right">
-    <i class="fas fa-check"></i>
-  </span>
-</div>
-</div>
-
-<div class="field">
-<label for="idrac" class="label">Idarc</label>
-<div class="control has-icons-left has-icons-right">
-  <input bind:value={idrac} id="idrac" class="input" type="text" placeholder="Idrac">
-  <span class="icon is-left">
-    <i class="fa-solid fa-globe"></i>
-  </span>
-  <span class="icon is-right">
-    <i class="fas fa-check"></i>
-  </span>
-</div>
-</div>
-
-<div class="field">
-<label for="desc" class="label">Description</label>
-<div class="control has-icons-left has-icons-right">
-  <input bind:value={desc} id="desc" class="input" type="text" placeholder="Description">
-  <span class="icon is-left">
-    <i class="fa-solid fa-globe"></i>
-  </span>
-  <span class="icon is-right">
-    <i class="fas fa-check"></i>
-  </span>
-</div>
+<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+  <div class="pl-2 border border-slate-300 rounded-md">
+    <label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
+    <input bind:value={desc} type="text" id="desc" name="desc" placeholder="Description"
+        class="px-2 py-2 w-96 border-0 focus:outline-0" />
 </div>
 <br>
 
-</form>
+</div>
 
 <button type="button" on:click={addMachine} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Machine</button> 
   
   <div class="mainContainer">
     <div class="headerContainer">
-      <h2>Server List</h2>
+      <h2 class="text-2xl font-light">{titleList}</h2>
       
     </div>
     <table class="table is-fullwidth">
@@ -235,6 +203,7 @@ function editMachine(index) {
         <th>Idrac</th>
         <th>Description</th>
         <th>Date Server Added</th>
+        <th>Functions</th>
       </tr>
     
       {#each machines as machine, index}
