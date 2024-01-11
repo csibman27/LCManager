@@ -4,6 +4,9 @@
 	export let data = PageData
 </script>
 
+<h1>Hello and welcome to my site!</h1>
+<a href="/about">About my site</a>
+
 <Header />
 {#if data.user}
      <p>Welcome, {data.user.email}</p>
