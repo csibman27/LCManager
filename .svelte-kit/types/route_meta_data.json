@@ -9,6 +9,9 @@
 	"/protected/api/boat": [
 		"src/routes/protected/api/boat/+page.server.ts"
 	],
+	"/protected/api/getserver": [
+		"src/routes/protected/api/getserver/+server.js"
+	],
 	"/protected/api/posts.json": [
 		"src/routes/protected/api/posts.json/+server.js"
 	],
@@ -19,7 +22,7 @@
 	"/protected/dashboard": [
 		"src/routes/protected/dashboard/+page.server.js"
 	],
-	"/protected/detail": [],
+	"/protected/dashboard/detail": [],
 	"/protected/home": [
 		"src/routes/protected/home/+page.server.js"
 	],
@@ -32,6 +35,5 @@
 	"/protected/profile": [],
 	"/protected/services": [
 		"src/routes/protected/services/+page.server.js"
-	],
-	"/protected/signup": []
+	]
 }

@@ -15,8 +15,7 @@ export const nodes = [
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
-	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/14')
 ];
 
 export const server_loads = [];
@@ -28,12 +27,11 @@ export const dictionary = {
 		"/protected/auth": [7,[2]],
 		"/protected/contact": [~8,[2]],
 		"/protected/dashboard": [~9,[2]],
-		"/protected/detail": [10,[2]],
+		"/protected/dashboard/detail": [10,[2]],
 		"/protected/home": [~11,[2],[,3]],
 		"/protected/login": [~12,[2]],
 		"/protected/profile": [13,[2]],
-		"/protected/services": [~14,[2]],
-		"/protected/signup": [15,[2]]
+		"/protected/services": [~14,[2]]
 	};
 
 export const hooks = {

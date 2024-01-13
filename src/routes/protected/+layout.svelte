@@ -36,18 +36,6 @@
             title: "Contact",
             href: "./contact"
         },
-        { 
-            title: "Login",
-            href: "./login"
-        },
-        { 
-            title: "Signup",
-            href: "./signup"
-        },
-        {
-            logout:"Logout",
-            href: "./logout"
-        }
     ];
   // Dropdown menu tailwind style
 
@@ -110,12 +98,12 @@
                     {/if}
                 </button>
                 <ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52" style:visibility={isDropdownOpen ? 'visible' : 'hidden'}>
-                    <li><button class="btn text-slate-300">Item 1</button></li>
-                    <li><button class="btn text-slate-300">Item 2</button></li>
+                    <li><button class="btn text-slate-300">User Privileges</button></li>
+                    <li><button class="btn text-slate-300">Logout</button></li>
                 </ul>
             </div>
             <p class="text-slate-300">
-                isDropdownOpen: {isDropdownOpen}
+                <!-- isDropdownOpen: {isDropdownOpen} -->
             </p>
         </div>
         
@@ -150,7 +138,7 @@
       }
       nav {
         display: flex;
-        background-color: #212529;
+        background-color: #036ad1;
         width: 100vw;
       }
       h1 {
