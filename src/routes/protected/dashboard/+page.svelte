@@ -5,6 +5,8 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import { createEventDispatcher } from 'svelte';
 	import InPlaceEdit from '$lib/InPlaceEdit.svelte';
+
+	export let data;
   
 
 	// Declare initial global titles
@@ -68,11 +70,11 @@
 			os: os,
 			idrac: idrac,
 			desc: desc,
-      dateManual: dateManual,
-      backupTo: backupTo,
-      monitoredWith: monitoredWith,
-      support: support,
-      services: services,
+            dateManual: date.toISOString(),
+            backupTo: backupTo,
+            monitoredWith: monitoredWith,
+            support: support,
+            services: services,
 			date: date.toISOString() //date in ISO 8601 format.
 		};
 		machines.push(machine);
@@ -99,7 +101,7 @@
 		(os = 'ubuntu 20.04 LTS'),
 		(idrac = '10.1.22.11'),
 		(desc = 'services available this and that')
-	);
+		);
 
 	// Delete a machine from the list
 	const deleteMachine = (id) => {
@@ -213,84 +215,69 @@
 	</div>
   <div>
 		<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			>Description</label
+			>Backup</label
 		>
 		<div class="pl-2 border border-slate-300 rounded-md">
-			<label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
+			<label for="ip"><i class="fas fa-server text-gray-500"></i></label>
 			<input
-				bind:value={desc}
+				bind:value={backupTo}
 				type="text"
-				id="desc"
-				name="desc"
-				placeholder="Description"
+				id="backupTo"
+				name="backupTo"
+				placeholder="Backups"
 				class="px-2 py-2 w-96 border-0 focus:outline-0"
 			/>
 		</div>
 	</div>
   <div>
 		<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			>Description</label
+			>Monitoring</label
 		>
 		<div class="pl-2 border border-slate-300 rounded-md">
-			<label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
+			<label for="ip"><i class="fas fa-desktop text-gray-500"></i></label>
 			<input
-				bind:value={desc}
+				bind:value={monitoredWith}
 				type="text"
-				id="desc"
-				name="desc"
-				placeholder="Description"
+				id="monitoredWith"
+				name="monitoredWith"
+				placeholder="Monitoring"
 				class="px-2 py-2 w-96 border-0 focus:outline-0"
 			/>
 		</div>
 	</div>
   <div>
 		<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			>Description</label
+			>Support yes or no</label
 		>
 		<div class="pl-2 border border-slate-300 rounded-md">
-			<label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
+			<label for="ip"><i class="fa-solid fa-phone text-gray-500"></i></label>
 			<input
-				bind:value={desc}
+				bind:value={support}
 				type="text"
-				id="desc"
-				name="desc"
-				placeholder="Description"
+				id="support"
+				name="support"
+				placeholder="Support"
 				class="px-2 py-2 w-96 border-0 focus:outline-0"
 			/>
 		</div>
 	</div>
   <div>
 		<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			>Description</label
+			>Services array</label
 		>
 		<div class="pl-2 border border-slate-300 rounded-md">
-			<label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
+			<label for="ip"><i class="fa-brands fa-servicestack text-gray-500"></i></label>
 			<input
-				bind:value={desc}
+				bind:value={services}
 				type="text"
-				id="desc"
-				name="desc"
-				placeholder="Description"
+				id="services"
+				name="services"
+				placeholder="Services"
 				class="px-2 py-2 w-96 border-0 focus:outline-0"
 			/>
 		</div>
 	</div>
-  <div>
-		<label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			>Description</label
-		>
-		<div class="pl-2 border border-slate-300 rounded-md">
-			<label for="ip"><i class="fa-solid fa-info text-gray-500"></i></label>
-			<input
-				bind:value={desc}
-				type="text"
-				id="desc"
-				name="desc"
-				placeholder="Description"
-				class="px-2 py-2 w-96 border-0 focus:outline-0"
-			/>
-		</div>
-	</div>
+  
 </div>
 <br />
 
@@ -316,15 +303,15 @@
 			<th>Functions</th>
 		</tr>
 
-		{#each machines as machine, index}
+		{#each data.data as machine, index}
 			<tr>
 				<td>{index + 1}.</td>
-				<td><InPlaceEdit bind:value={machine.name} on:submit={submit('text')} /></td>
-				<td><InPlaceEdit bind:value={machine.ip} on:submit={submit('text')} /></td>
-				<td><InPlaceEdit bind:value={machine.os} on:submit={submit('text')} /></td>
-				<td><InPlaceEdit bind:value={machine.idrac} on:submit={submit('text')} /></td>
-				<td><InPlaceEdit bind:value={machine.desc} on:submit={submit('text')} /></td>
-				<td>{machine.date}</td>
+				<td><InPlaceEdit bind:value={machine.serverName} on:submit={submit('text')} /></td>
+				<td><InPlaceEdit bind:value={machine.serverIP} on:submit={submit('text')} /></td>
+				<td><InPlaceEdit bind:value={machine.serverOS} on:submit={submit('text')} /></td>
+				<td><InPlaceEdit bind:value={machine.serverIdrac} on:submit={submit('text')} /></td>
+				<td><InPlaceEdit bind:value={machine.serverDesc} on:submit={submit('text')} /></td>
+				<td>{machine.dateManual}</td>
 				<div class="actions">
 					<!-- more info -->
 					<i
@@ -355,46 +342,11 @@
 	</table>
 </div>
 
-<!-- Modal for pop up menu-->
-{#if showModal}
-	<div class="modal">
-		<div class="modal-content">
-			{#if selectedItemId !== null}
-				<h2>More Information:</h2>
-				<p>{machines.find((machine) => machine.uid === selectedItemId).services}</p>
-			{/if}
-			<slot />
-			<button on:click={handleClose}>Close</button>
-		</div>
-	</div>
-{/if}
 
 <Footer />
 
 <style>
-	.btn {
-		bottom: 20px;
-		position: sticky;
-	}
-	/* Modal styles */
-	.modal {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 9999;
-	}
 
-	.modal-content {
-		background-color: white;
-		padding: 20px;
-		border-radius: 5px;
-	}
 	.actions {
 		display: flex;
 		align-items: center;

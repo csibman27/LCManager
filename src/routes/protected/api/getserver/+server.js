@@ -14,3 +14,22 @@ export async function POST({ request }) {
 
   return json(results);
 }
+
+// export const post = async ({ body }) => {
+//   const added = await mysqlconnFn
+//     .insert({
+//       title: body.get('title'),
+//       author: body.get('author'),
+//     // .insert(json.parse(body)) // or you can send json.stringfy(dataobject)
+//     .into('admins')
+
+//   if (added) {
+//     return {
+//       status: 200,
+//       body: {
+//         message: 'server added successfully!'
+//       }
+//     }
+//   }
+//   // else
+// }

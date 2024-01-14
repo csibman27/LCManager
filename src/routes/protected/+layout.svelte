@@ -4,7 +4,7 @@
     <meta name="description" content="Final-Project of HDIP22">
     <style>
         body{
-            margin:0;
+            margin: 0;
         }
     </style>
 </svelte:head>
@@ -117,7 +117,6 @@
           margin: 0;
           background-color: white;
           color: black;
-          margin:0;
           background-color: white;
           height: 100vh;
           width: 100vw;
@@ -139,7 +138,7 @@
       nav {
         display: flex;
         background-color: #036ad1;
-        width: 100vw;
+        /* width: 100vw; */
       }
       h1 {
         margin: 1;
