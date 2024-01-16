@@ -127,7 +127,7 @@
       ul {
         display: flex;
         margin: 1;
-        margin-left: auto;
+        margin-left: 50px;
         margin-right: 100px;
         list-style: none;
       }
